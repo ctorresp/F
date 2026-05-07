@@ -1,0 +1,105 @@
+<section class="page usuario-page">
+  <div class="auth-panel">
+    <div class="auth-header">
+      <p class="eyebrow">Autenticación</p>
+    </div>
+
+    <div *ngIf="!user" class="auth-actions">
+      <div class="auth-tabs">
+        <button type="button" [class.active]="mode === 'login'" (click)="switchMode('login')">Login</button>
+        <button type="button" [class.active]="mode === 'register'" (click)="switchMode('register')">Registro</button>
+        <button type="button" [class.active]="mode === 'rut-only'" (click)="switchMode('rut-only')">Entrar con RUT</button>
+      </div>
+
+      <form class="auth-form" (ngSubmit)="mode === 'register' ? register() : mode === 'login' ? login() : enterWithRut()">
+        <label>
+          RUT
+          <input type="text" [(ngModel)]="rut" name="rut" placeholder="Ej. 12.345.678-9" />
+        </label>
+
+        <ng-container *ngIf="mode === 'register' || mode === 'login'">
+          <label *ngIf="mode === 'register'">
+            Nombre
+            <input type="text" [(ngModel)]="nombre" name="nombre" placeholder="Ej. Juan Pérez" />
+          </label>
+
+          <label>
+            Contraseña
+            <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" />
+          </label>
+        </ng-container>
+
+        <label *ngIf="mode === 'register'">
+          Confirmar contraseña
+          <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Repite la contraseña" />
+        </label>
+
+        <button type="submit" class="secondary-action" [disabled]="authLoading">
+          {{ authLoading ? 'Procesando...' : mode === 'register' ? 'Registrarse' : mode === 'login' ? 'Iniciar sesión' : 'Entrar con rut' }}
+        </button>
+      </form>
+    </div>
+
+    <div *ngIf="user" class="user-welcome">
+      <p class="eyebrow">Sesión activa</p>
+      <h2>Bienvenido{{ user.nombre ? ' ' + user.nombre : '' }}</h2>
+      <p>RUT: {{ user.rut }}</p>
+      <button type="button" class="secondary-action" (click)="logout()">Cerrar sesión</button>
+    </div>
+
+    <p class="message" *ngIf="mensaje">{{ mensaje }}</p>
+  </div>
+
+  <div *ngIf="user" class="hero-card">
+    <div class="hero-copy">
+      <p class="eyebrow">FireWall</p>
+      <h2>Reporte Ciudadano</h2>
+      <p>Inicia un reporte automático con GPS y comparte la alerta con el admin.</p>
+    </div>
+
+    <button type="button" class="hero-action" (click)="enviarReporte()" [disabled]="!locationAllowed || loading">
+      {{ loading ? 'Enviando...' : 'INICIAR REPORTE AUTOMÁTICO (GPS)' }}
+    </button>
+    <p class="permission-note" *ngIf="!locationAllowed && permissionRequested">Debes habilitar la ubicación en tu navegador para enviar reportes.</p>
+  </div>
+
+  <section *ngIf="user" class="manual-report">
+    <h3>Reporte Manual</h3>
+    <p>Completa estos datos si deseas agregar más contexto.</p>
+
+    <form (ngSubmit)="enviarReporte()" class="report-form">
+      <label>
+        RUT
+        <input type="text" [value]="user?.rut" disabled />
+      </label>
+
+      <label>
+        Ubicación
+        <input type="text" [(ngModel)]="ubicacion" name="ubicacion" placeholder="Ej. Calle 12 #34" />
+      </label>
+
+      <label>
+        Tipo de reporte
+        <select [(ngModel)]="tipo" name="tipo">
+          <option>Incendio</option>
+          <option>Fuma</option>
+          <option>Rescate</option>
+          <option>Otro</option>
+        </select>
+      </label>
+
+      <label>
+        Descripción
+        <textarea rows="4" [(ngModel)]="descripcion" name="descripcion" placeholder="Describe lo que ves..."></textarea>
+      </label>
+
+      <label>
+        Fotos
+        <input type="file" #photosInput (change)="onPhotosSelected($event)" accept="image/*" multiple />
+        <small *ngIf="fotos.length">{{ fotos.length }} archivo(s) seleccionado(s)</small>
+      </label>
+
+      <button type="submit" class="secondary-action" [disabled]="loading || !locationAllowed">{{ loading ? 'Enviando...' : 'Enviar reporte' }}</button>
+    </form>
+  </section>
+</section>

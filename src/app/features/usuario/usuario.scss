@@ -1,0 +1,229 @@
+.page {
+  padding: 0 0.75rem 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-panel,
+.manual-report,
+.hero-card {
+  padding: 1.4rem;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-card {
+  background: linear-gradient(180deg, rgba(255, 88, 90, 0.18), rgba(12, 16, 42, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(20px);
+}
+
+.hero-copy .eyebrow {
+  margin: 0 0 0.4rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: #7ce9ff;
+  text-transform: uppercase;
+}
+
+.hero-copy h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.05;
+}
+
+.hero-copy p {
+  margin: 0.85rem 0 0;
+  color: #d9e5ff;
+  line-height: 1.6;
+}
+
+.hero-action {
+  margin-top: 1.4rem;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 1.2rem 1.2rem;
+  background: linear-gradient(135deg, #ff9f45, #ff5571);
+  color: #071721;
+  font-weight: 800;
+  font-size: 0.98rem;
+  box-shadow: 0 18px 36px rgba(255, 93, 116, 0.24);
+  cursor: pointer;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.feature-card {
+  display: grid;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.feature-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.09);
+  font-size: 1.2rem;
+}
+
+.feature-card p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.feature-card span {
+  color: #b8d7ff;
+  font-size: 0.72rem;
+}
+
+.manual-report {
+  padding: 1.3rem;
+  border-radius: 1.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.manual-report h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.12rem;
+}
+
+.manual-report p {
+  margin: 0 0 1rem;
+  color: #b8d7ff;
+}
+
+.report-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.report-form label {
+  display: grid;
+  gap: 0.5rem;
+  color: #eef6ff;
+  font-weight: 600;
+}
+
+.report-form input,
+.report-form select,
+.report-form textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #f8fafc;
+}
+
+.report-form input::placeholder,
+.report-form textarea::placeholder {
+  color: rgba(248, 250, 252, 0.62);
+}
+
+.secondary-action {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 0.95rem 1.1rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.secondary-action:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.auth-header {
+  margin-bottom: 1rem;
+}
+
+.auth-header .eyebrow {
+  margin: 0 0 0.4rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: #7ce9ff;
+  text-transform: uppercase;
+}
+
+.auth-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.auth-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.auth-tabs button {
+  flex: 1;
+  min-width: 120px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef6ff;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+}
+
+.auth-tabs button.active {
+  background: linear-gradient(135deg, #ff9f45, #ff5571);
+  border-color: transparent;
+  color: #071721;
+}
+
+.auth-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.user-welcome {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.user-welcome .eyebrow {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: #7ce9ff;
+  text-transform: uppercase;
+}
+
+.user-welcome h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.permission-note {
+  margin-top: 0.85rem;
+  color: #ffb3b3;
+  font-size: 0.9rem;
+}
+
+.message {
+  margin-top: 0.75rem;
+  color: #a6ffcb;
+  font-weight: 600;
+}

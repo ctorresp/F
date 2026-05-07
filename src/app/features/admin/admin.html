@@ -1,0 +1,22 @@
+<section class="page admin-page">
+  <div class="status-card">
+    <h2>Valle del Sol (Chile)</h2>
+    <p>Payload de Supervisión — Seguridad Ciudadana</p>
+  </div>
+
+  <div class="report-list" *ngIf="reportService.reports().length; else noReports">
+    <article class="report-card" *ngFor="let reporte of reportService.reports()">
+      <div class="report-header">
+        <strong>{{ reporte.tipo }}</strong>
+        <span class="date">{{ reporte.fecha }}</span>
+      </div>
+      <p class="report-location">{{ reporte.ubicacion }}</p>
+      <p>{{ reporte.descripcion }}</p>
+      <a *ngIf="reporte.enlace" [href]="reporte.enlace" target="_blank" class="map-link">Ver en mapa</a>
+    </article>
+  </div>
+
+  <ng-template #noReports>
+    <p class="empty">No hay reportes todavía. Un usuario debe enviar uno.</p>
+  </ng-template>
+</section>
