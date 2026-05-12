@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+::ng-deep .fw-landing-tabs .mat-mdc-tab-labels {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+::ng-deep .fw-landing-tabs .mat-mdc-tab .mdc-tab__text-label {
+  color: rgba(228, 228, 231, 0.85);
+}
+
+::ng-deep .fw-landing-tabs .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #fdba74;
+}
+
+::ng-deep .fw-landing-tabs .mat-mdc-form-field .mdc-notched-outline__leading,
+::ng-deep .fw-landing-tabs .mat-mdc-form-field .mdc-notched-outline__notch,
+::ng-deep .fw-landing-tabs .mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+::ng-deep .fw-landing-tabs .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+::ng-deep .fw-landing-tabs .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+::ng-deep .fw-landing-tabs .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: rgba(251, 146, 60, 0.65) !important;
+}

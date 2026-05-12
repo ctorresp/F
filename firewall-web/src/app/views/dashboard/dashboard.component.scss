@@ -1,0 +1,14 @@
+.fw-nav-active {
+  background: linear-gradient(90deg, rgba(249, 115, 22, 0.15), transparent) !important;
+  border-left: 3px solid #fb923c;
+}
+
+mat-sidenav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+mat-sidenav-content {
+  min-height: 100vh;
+}

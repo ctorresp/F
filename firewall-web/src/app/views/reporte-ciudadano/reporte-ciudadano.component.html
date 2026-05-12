@@ -1,0 +1,63 @@
+<mat-card class="!bg-zinc-900/70 !border !border-white/10 max-w-xl mx-auto">
+  <mat-card-header>
+    <mat-icon mat-card-avatar class="text-sky-400">photo_camera</mat-icon>
+    <mat-card-title class="!text-zinc-100">Reporte ciudadano</mat-card-title>
+    <mat-card-subtitle class="!text-zinc-500">
+      POST <code class="text-orange-300/90">/api/reports/enviar</code> (gateway) o
+      <code class="text-orange-300/90">/api/reportes/enviar</code> (directo)
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="!space-y-4">
+    <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic" color="accent">
+      <mat-label>Descripción del incidente</mat-label>
+      <textarea matInput rows="3" [(ngModel)]="descripcion" name="desc" required></textarea>
+    </mat-form-field>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic" color="accent">
+        <mat-label>Latitud</mat-label>
+        <input matInput [(ngModel)]="latitud" name="lat" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic" color="accent">
+        <mat-label>Longitud</mat-label>
+        <input matInput [(ngModel)]="longitud" name="lng" />
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline" class="w-full" subscriptSizing="dynamic" color="accent">
+      <mat-label>Referencia (opcional)</mat-label>
+      <input matInput [(ngModel)]="referencia" name="ref" />
+    </mat-form-field>
+    <div
+      class="rounded-xl border border-dashed border-white/15 bg-white/5 px-4 py-6 text-center hover:border-orange-400/40 transition-colors"
+    >
+      <input
+        #fileInp
+        type="file"
+        accept="image/*"
+        class="hidden"
+        (change)="onFile($event)"
+      />
+      <button mat-stroked-button type="button" (click)="fileInp.click()">
+        <mat-icon>upload</mat-icon>
+        Adjuntar imagen (simulado)
+      </button>
+      @if (archivoNombre) {
+        <p class="mt-2 text-xs text-emerald-300/90 truncate">{{ archivoNombre }}</p>
+        <p class="text-[10px] text-zinc-500">Se envía URL de demostración compatible con el backend.</p>
+      }
+    </div>
+    <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      class="w-full fw-btn-shimmer !py-6 !bg-gradient-to-r !from-orange-600 !to-amber-600"
+      (click)="enviar()"
+      [disabled]="vm.loading() || !descripcion.trim()"
+    >
+      @if (vm.loading()) {
+        Enviando…
+      } @else {
+        Enviar reporte
+      }
+    </button>
+  </mat-card-content>
+</mat-card>

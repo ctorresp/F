@@ -39,6 +39,12 @@ public class ApiGatewayApplication {
 	@Bean
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes()
+			.route("ms_reportes_api_exact", r -> r.path("/api/reports")
+				.filters(f -> f.rewritePath("/api/reports", "/api/reportes"))
+				.uri("http://ms-reportes:8081"))
+			.route("ms_geolocation_api_exact", r -> r.path("/api/geolocation")
+				.filters(f -> f.rewritePath("/api/geolocation", "/api/monitoreo"))
+				.uri("http://monitoreo-service:8083"))
 			.route("ms_usuarios_api", r -> r.path("/api/usuarios/**")
 				.uri("http://ms-usuarios:8084"))
 			.route("ms_reportes_api", r -> r.path("/api/reports/**")
