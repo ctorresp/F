@@ -1,5 +1,5 @@
 # Firewall Web — Frontend Angular
-
+...................
 Interfaz ciudadana del sistema Firewall. Permite reportar incidentes con geolocalización GPS, visualizar el mapa de alertas activas en tiempo real y gestionar sesión por RUT. Sirve archivos estáticos vía **Nginx** y proxifica las llamadas a la API al Gateway.
 
 ---
